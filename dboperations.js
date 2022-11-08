@@ -67,11 +67,11 @@ async function putAsig(Asignatura,Id) {
 }
 
 
-async function deleteAsigXId(asignaturaId) {
+async function deleteAsigXId(id) {
     try {
         let pool = await sql.connect(config);        
         let deleteColegio = await pool.request()
-        .input('Id', sql.Int,asignaturaId)               
+        .input('id', sql.Int,id)               
         .execute('SP_ELIMINARASIG')        
          return deleteColegio.recordset;
     }
@@ -79,6 +79,8 @@ async function deleteAsigXId(asignaturaId) {
         console.log(error);
     }
 }
+
+
 //hasta aqui operaciones asignatura
 //operaciones docente
 async function getDocs() {
@@ -143,11 +145,11 @@ async function putDoc(Docente,Id) {
     }
 }
 
-async function deleteDocXId(DocenteId) {
+async function deleteDocXId(id) {
     try {
         let pool = await sql.connect(config);        
         let deleteColegio = await pool.request()
-        .input('Id', sql.Int,DocenteId)               
+        .input('id', sql.Int,id)               
         .execute('SP_ELIMINARDOC')        
          return deleteColegio.recordset;
     }
@@ -223,11 +225,11 @@ async function putEst(Estudiante,Id) {
     }
 }
 
-async function deleteEstXId(EstudianteId) {
+async function deleteEstXId(id) {
     try {
         let pool = await sql.connect(config);        
         let deleteColegio = await pool.request()
-        .input('Id', sql.Int,EstudianteId)               
+        .input('id', sql.Int,id)               
         .execute('SP_ELIMINAREST')        
          return deleteColegio.recordset;
     }
@@ -271,13 +273,13 @@ async function postRec(Record) {
     try {
         let pool = await sql.connect(config);
         let insertColegio = await pool.request()
-            .input('Codigo', sql.NVarChar, Record.Codigo)
-            .input('Periodo', sql.NVarChar, Record.Periodo)
-            .input('Codest', sql.NVarChar, Record.Cod_Est)
-            .input('Coddoc', sql.NVarChar, Record.Cod_Doc)
-            .input('Nota1', sql.Decimal, Record.Nota1)
-            .input('Nota2', sql.Decimal, Record.Nota2)
-            .execute('SP_INSERTARREC');
+        .input('Codigo', sql.NVarChar, Record.Codigo)
+        .input('Periodo', sql.NVarChar, Record.Periodo)
+        .input('Codest', sql.NVarChar, Record.Cod_Est)
+        .input('Coddoc', sql.NVarChar, Record.Cod_Doc)
+        .input('Nota1', sql.Decimal, Record.Nota1)
+        .input('Nota2', sql.Decimal, Record.Nota2)
+        .execute('SP_INSERTARREC');
         return insertColegio.recordsets;
     }
     catch (error) {
@@ -306,11 +308,11 @@ async function putRec(Record,Id) {
     }
 }
 
-async function deleteRecXId(RecordId) {
+async function deleteRecXId(id) {
     try {
         let pool = await sql.connect(config);        
         let deleteColegio = await pool.request()
-        .input('Id', sql.Int,RecordId)               
+        .input('id', sql.Int,id)               
         .execute('SP_ELIMINARREC')        
          return deleteColegio.recordset;
     }

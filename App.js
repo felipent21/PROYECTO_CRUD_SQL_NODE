@@ -63,12 +63,14 @@ router.route('/edita/:id').put((request, response)=>{
 //ACA ESTAMOS TRABAJANDO
 router.route('/deletea/:id').delete((request, response)=>{
    let asignatura = {...request.body}
-   dboperations.deleteAsigXId(asignatura,request.params.id).then(result =>{
+   dboperations.deleteAsigXId(request.params.id).then(result =>{
        response.json(result)     
        console.log(result)
        console.log('Eliminado!!!')
     })
 })
+
+
 //ACA ESTAMOS TRABAJANDO
 //termina rutas de asignatura
 //rutas de docente
@@ -104,14 +106,19 @@ router.route('/editd/:id').put((request, response)=>{
    })
 })
 
+
+
+
 router.route('/deleted/:id').delete((request, response)=>{
-   let docente = {...request.body}
-   dboperations.deleteAsigXId(docente,request.params.id).then(result =>{
+   let asignatura = {...request.body}
+   dboperations.deleteDocXId(request.params.id).then(result =>{
        response.json(result)     
        console.log(result)
        console.log('Eliminado!!!')
     })
 })
+
+
 //termian rutas de docente
 
 // rutas de estudiante
@@ -148,9 +155,11 @@ router.route('/edite/:id').put((request, response)=>{
    })
 })
 
+
+
 router.route('/deletee/:id').delete((request, response)=>{
-   let estudiante = {...request.body}
-   dboperations.deleteEstXId(estudiante,request.params.id).then(result =>{
+   let asignatura = {...request.body}
+   dboperations.deleteEstXId(request.params.id).then(result =>{
        response.json(result)     
        console.log(result)
        console.log('Eliminado!!!')
@@ -173,6 +182,8 @@ router.route('/Record/:id').get((request,response)=>{
 
 })
 
+
+
 router.route('/Record').post((request,response)=>{
    let record = {...request.body}
    dboperations.postRec(record).then(result => {
@@ -180,6 +191,9 @@ router.route('/Record').post((request,response)=>{
      console.log(result)   
    })
 })
+
+
+
 
 router.route('/editr/:id').put((request, response)=>{
    let record = {...request.body}
@@ -192,7 +206,7 @@ router.route('/editr/:id').put((request, response)=>{
 
 router.route('/deleter/:id').delete((request, response)=>{
    let record = {...request.body}
-   dboperations.deleteRecXId(record,request.params.id).then(result =>{
+   dboperations.deleteRecXId(request.params.id).then(result =>{
        response.json(result)     
        console.log(result)
        console.log('Eliminado!!!')
@@ -202,5 +216,7 @@ router.route('/deleter/:id').delete((request, response)=>{
 
 var port = process.env.PORT || 8090;
 app.listen(port);
-console.log('Order API is runnning at ' + port);
+console.log('Colegio API esta corriendo en el puerto ' + port);
+
+
 
